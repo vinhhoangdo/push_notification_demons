@@ -94,6 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  /// For handling notification when the app is (off or) in terminated state
   void checkForInitialMessage() async {
     await Firebase.initializeApp();
     RemoteMessage? initialMessage =
@@ -156,8 +157,8 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 10),
             NotificationBadge(totalNotification: _totalNotification),
             _notificationInfo != null
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                ? Wrap(
+                    direction: Axis.vertical,
                     children: [
                       Text(
                         'Title: ${_notificationInfo!.dataTitle ?? _notificationInfo!.title}',
